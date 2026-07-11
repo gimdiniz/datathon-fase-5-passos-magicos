@@ -1,9 +1,0 @@
-﻿Pergunta,Métrica,Valor
-1,Alunos com 3 anos e ingresso consistente,263
-1,Grupo com maior inclinação média,Antigos
-2,Número de personas escolhido,2
-2,Silhouette do modelo escolhido,0.2588
-3,Transição com maior proporção de queda,FASE 2 → FASE 3
-3,P-valor do teste conjunto,0.0021
-4,Alunos com queda brusca de IPS,265
-4,Recuperaram o INDE em até 1 ciclo (%),52.08
