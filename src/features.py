@@ -1,8 +1,3 @@
-"""Catálogo inicial de features e regras contra vazamento temporal.
-
-Este módulo não define o target definitivo e não treina modelos.
-"""
-
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -12,8 +7,6 @@ import pandas as pd
 
 @dataclass(frozen=True)
 class ConfiguracaoTemporal:
-    """Define a janela de observação e o ano do desfecho."""
-
     ano_features: int
     ano_target: int
 
@@ -62,7 +55,6 @@ FEATURES_CANDIDATAS_COM_VALIDACAO_TEMPORAL = {
 
 
 def classificar_colunas(colunas: list[str] | pd.Index) -> pd.DataFrame:
-    """Classifica colunas sem afirmar que uma feature já está aprovada."""
     linhas = []
     for coluna_original in colunas:
         coluna = str(coluna_original).lower()
