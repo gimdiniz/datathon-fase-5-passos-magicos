@@ -1,0 +1,10 @@
+ian_2022,ian_2024,quantidade
+"Severa (2,5)","Severa (2,5)",0
+"Severa (2,5)","Moderada (5,0)",4
+"Severa (2,5)","Em Fase (10,0)",2
+"Moderada (5,0)","Severa (2,5)",2
+"Moderada (5,0)","Moderada (5,0)",128
+"Moderada (5,0)","Em Fase (10,0)",153
+"Em Fase (10,0)","Severa (2,5)",0
+"Em Fase (10,0)","Moderada (5,0)",28
+"Em Fase (10,0)","Em Fase (10,0)",117

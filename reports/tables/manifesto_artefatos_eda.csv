@@ -1,0 +1,28 @@
+secao_eda,nome_analise,tipo_artefato,arquivo_gerado,status,observacao_dashboard
+Fundações e evolução temporal,Distribuição do IAN por ano,figura,reports/figures/fig_eda_01_perfil_defasagem_ian.png,criado agora,Mostra a evolução agregada do perfil de defasagem.
+Fundações e evolução temporal,Distribuição do IAN por ano,tabela,reports/tables/eda_ian_distribuicao.csv,criado agora,Alimenta cards e percentuais anuais sem registros individuais.
+Fundações e evolução temporal,Evolução longitudinal e matriz de transição do IAN,figura,reports/figures/fig_eda_02_transicao_ian_longitudinal.png,criado agora,Resume mobilidade entre níveis na amostra longitudinal.
+Fundações e evolução temporal,Evolução longitudinal do IAN,tabela,reports/tables/eda_ian_evolucao_longitudinal.csv,criado agora,Permite destacar manutenção redução e aumento da defasagem.
+Fundações e evolução temporal,Matriz de transição do IAN,tabela,reports/tables/eda_ian_matriz_transicao.csv,criado agora,Apresenta somente contagens agregadas de transição.
+Fundações e evolução temporal,Desempenho IDA por fase e ano,figura,reports/figures/fig_eda_03_desempenho_ida_fase_ano.png,criado agora,Apoia o diagnóstico de gargalos educacionais por fase.
+Fundações e evolução temporal,INDE por pedra e ano,figura,reports/figures/fig_eda_04_inde_pedra_ano.png,criado agora,Contextualiza a distribuição do índice nas pedras.
+Fundações e evolução temporal,INDE médio por pedra e ano,tabela,reports/tables/eda_inde_pedra_ano.csv,criado agora,Disponibiliza médias agregadas para cards ou tabela executiva.
+Cruzamentos e comportamento,Correlação entre IEG IDA e IPV,figura,reports/figures/fig_eda_05_correlacao_engajamento_desempenho_ipv.png,criado agora,Mostra associações sem identificação e sem inferência causal.
+Cruzamentos e comportamento,Autoavaliação versus desempenho e engajamento,figura,reports/figures/fig_eda_06_autoavaliacao_desempenho_engajamento.png,criado agora,Ilustra os gaps já analisados no notebook.
+Cruzamentos e comportamento,Aderência da autoavaliação por pedra,figura,reports/figures/fig_eda_07_gap_autoavaliacao_por_pedra.png,criado agora,Mostra a evolução agregada do gap IAA menos IDA.
+Cruzamentos e comportamento,Relação entre IAN e IPP,figura,reports/figures/fig_eda_08_relacao_ian_ipp.png,criado agora,Apoia a leitura complementar entre defasagem e dimensão psicopedagógica.
+Cruzamentos e comportamento,IPS anterior e variações futuras de IEG e IDA,figura,reports/figures/fig_eda_09_ips_anterior_variacoes_futuras.png,criado agora,Apresenta distribuições agregadas de variação após faixas de IPS.
+Cruzamentos e comportamento,Indicadores associados ao INDE,figura,reports/figures/fig_eda_10_composicao_inde.png,criado agora,Explica correlações e coeficientes já estimados na EDA.
+Cruzamentos e comportamento,Indicadores associados ao IPV,figura,reports/figures/fig_eda_11_relacoes_ipv.png,criado agora,Resume associações condicionadas já analisadas.
+Perguntas extras,Tempo no programa e trajetória do INDE,figura,reports/figures/fig_perguntas_extra_01_tempo_programa.png,existente,Apoia a leitura de inclinação e sustentabilidade por grupo de permanência.
+Perguntas extras,Tempo no programa e trajetória do INDE,tabela,reports/tables/eda_tempo_programa_resumo.csv,criado agora,Disponibiliza tamanho inclinação e variação mediana agregados.
+Perguntas extras,Personas exploratórias em PCA,figura,reports/figures/fig_perguntas_extra_02_personas_pca.png,existente,Mostra a separação exploratória dos perfis sem identificação.
+Perguntas extras,Assinatura média das personas,figura,reports/figures/fig_perguntas_extra_02_personas_heatmap.png,existente,Compara médias padronizadas dos perfis.
+Perguntas extras,Avaliação da quantidade de personas,tabela,reports/tables/eda_personas_avaliacao_k.csv,criado agora,Registra inércia e silhouette para as alternativas já testadas.
+Perguntas extras,Distribuição das personas,tabela,reports/tables/eda_personas_distribuicao.csv,criado agora,Mostra apenas contagens e percentuais agregados.
+Perguntas extras,Perfil médio das personas,tabela,reports/tables/eda_personas_perfil_medio.csv,criado agora,Resume médias dos indicadores por perfil exploratório.
+Perguntas extras,Gargalos nas transições de fase,figura,reports/figures/fig_perguntas_extra_03_gargalos_transicao.png,existente,Destaca transições que merecem investigação pedagógica.
+Perguntas extras,Gargalos nas transições de fase,tabela,reports/tables/eda_transicoes_fase_resumo.csv,criado agora,Disponibiliza volumes percentuais de queda e deltas médios agregados.
+Perguntas extras,Resiliência após queda no IPS,figura,reports/figures/fig_perguntas_extra_04_resiliencia.png,existente,Mostra recuperação acadêmica no único ciclo observável.
+Perguntas extras,Resiliência após queda no IPS,tabela,reports/tables/eda_resiliencia_ips_resumo.csv,criado agora,Resume contagens e percentuais agregados de recuperação.
+Síntese,Hipóteses analíticas iniciais,texto,,ausente,Permanece como narrativa no notebook e será sintetizada no dashboard a partir dos artefatos de apoio sem criar nova conclusão.
