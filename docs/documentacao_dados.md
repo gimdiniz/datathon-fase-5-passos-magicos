@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Este documento registra a estrutura das bases disponíveis para o Datathon Passos Mágicos e as condições mínimas para seu uso analítico. Ele não substitui o dicionário oficial da instituição.
+Este documento registra a estrutura esperada das bases do Datathon Passos Mágicos e as condições mínimas para seu uso analítico. Ele não substitui o dicionário oficial da instituição. A presença de arquivos locais varia por usuário e depende de autorização.
 
 ## Origem e arquivos locais
 
@@ -14,9 +14,9 @@ A fonte local auditada é `data/raw/BASE DE DADOS PEDE 2024 - DATATHON.xlsx`, co
 | PEDE2023 | 1.014 | 48 | 2023 |
 | PEDE2024 | 1.156 | 50 | 2024 |
 
-Também foi encontrada `data/processed/base_2024_clean.csv`, com 1.156 linhas e 58 colunas. Ela corresponde à estrutura de 2024, não à base histórica consolidada citada nos notebooks.
+Arquivos em `data/processed/` são derivados locais sensíveis. Eles não são distribuídos nem versionados. O notebook `01_visao_geral_base.ipynb` gera localmente `passos_magicos_clean_eda.csv` para consumo das etapas seguintes.
 
-O notebook `01_visao_geral_base.ipynb` declara a geração de `data/processed/passos_magicos_clean_eda.csv`, mas esse arquivo não estava disponível localmente no momento da auditoria.
+Consulte `docs/obtencao_dados.md` e `docs/reprodutibilidade.md` antes de executar o fluxo.
 
 ## Unidade de observação
 

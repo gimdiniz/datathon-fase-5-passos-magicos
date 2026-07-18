@@ -11,11 +11,10 @@ env/
 # Environment variables
 .env
 
-# Data
+# Dados educacionais: nunca versionar bases cruas ou derivadas linha a linha
 data/raw/
 data/interim/
-data/processed/*.xlsx
-data/processed/*.csv
+data/processed/
 
 # Models
 
