@@ -6,6 +6,7 @@ Ela não acessa bases em ``data/`` nem produz previsões individuais.
 
 from __future__ import annotations
 
+from html import escape
 from pathlib import Path
 from typing import Iterable
 
@@ -83,6 +84,11 @@ def aplicar_estilo() -> None:
         h1, h2, h3 { color: var(--azul-profundo); letter-spacing: -.02em; }
         h1 { font-size: 2.45rem !important; }
         h2 { margin-top: 1.1rem !important; }
+        .titulo-sem-ancora { color: var(--azul-profundo); letter-spacing: -.02em; font-weight: 700; }
+        .titulo-pagina { font-size: 2.45rem; line-height: 1.2; margin: .15rem 0 .8rem; }
+        .titulo-secao { font-size: 1.75rem; line-height: 1.25; margin: 1.1rem 0 .75rem; }
+        .titulo-secundario { font-size: 1.5rem; line-height: 1.3; margin: 1.15rem 0 .65rem; }
+        .titulo-lateral { color: #F7FBFC; font-size: 1.5rem; line-height: 1.25; margin: .25rem 0 .65rem; }
         p, li { line-height: 1.65; }
 
         .hero {
@@ -226,7 +232,7 @@ def mostrar_figura(
     *,
     auditada: bool = True,
 ) -> None:
-    st.subheader(titulo)
+    titulo_sem_ancora(titulo)
     caminho = resolver_caminho(caminho_relativo, exigir_auditoria=auditada)
     if caminho is None:
         st.info(f"Figura indisponível no momento: `{Path(caminho_relativo).name}`.")
@@ -264,8 +270,18 @@ def mostrar_tabela_em_expansor(
 
 def cabecalho_secao(sobretitulo: str, titulo: str, descricao: str) -> None:
     st.markdown(f'<div class="eyebrow" style="color:#2A7F7A">{sobretitulo}</div>', unsafe_allow_html=True)
-    st.title(titulo)
+    titulo_sem_ancora(titulo, nivel="pagina")
     st.markdown(f'<div class="section-intro">{descricao}</div>', unsafe_allow_html=True)
+
+
+def titulo_sem_ancora(titulo: str, nivel: str = "secundario") -> None:
+    """Exibe títulos visuais sem gerar permalink automático do Streamlit."""
+    niveis = {"pagina", "secao", "secundario", "lateral"}
+    nivel_seguro = nivel if nivel in niveis else "secundario"
+    st.markdown(
+        f'<div class="titulo-sem-ancora titulo-{nivel_seguro}">{escape(titulo)}</div>',
+        unsafe_allow_html=True,
+    )
 
 
 def formatar_percentual(valor: float) -> str:
@@ -304,7 +320,7 @@ def pagina_visao_geral() -> None:
     colunas[2].metric("Modelos comparados", "5")
     colunas[3].metric("Finalidade", "Prevenção")
 
-    st.header("Da compreensão à ação responsável")
+    titulo_sem_ancora("Da compreensão à ação responsável", nivel="secao")
     st.markdown(
         """
         A Passos Mágicos atua para transformar a vida de crianças e jovens por meio da educação. Este dashboard organiza as evidências já produzidas no projeto em uma jornada decisória: primeiro entendemos o cenário educacional; depois reconhecemos sinais de atenção; por fim, avaliamos como um modelo preliminar pode apoiar — e nunca substituir — a equipe pedagógica.
@@ -329,7 +345,7 @@ def pagina_diagnostico() -> None:
         "A leitura começa pela defasagem e avança para desempenho e trajetória no programa. Os resultados são descritivos e não demonstram causalidade.",
     )
 
-    st.markdown("### Indicadores em linguagem simples")
+    titulo_sem_ancora("Indicadores em linguagem simples")
     c1, c2, c3, c4 = st.columns(4)
     c1.info("**IAN**\n\nAdequação do estudante à fase esperada para sua idade.")
     c2.info("**IDA**\n\nDesempenho acadêmico observado nas avaliações.")
@@ -518,8 +534,24 @@ def pagina_modelo() -> None:
         c3.metric("PR-AUC", formatar_decimal(float(rf["pr_auc"])))
         c4.metric("Brier score", formatar_decimal(float(rf["brier_score"])))
 
-    st.markdown("### Por que acurácia não é a métrica principal?")
+    titulo_sem_ancora("Por que acurácia não é a métrica principal?")
     st.write("A acurácia pode parecer alta mesmo quando o modelo deixa de reconhecer muitos estudantes em risco. Neste contexto, o recall mostra quanto do risco real foi encontrado; F1 equilibra recall e precisão; PR-AUC avalia a separação da classe de interesse; e Brier score verifica a qualidade das probabilidades.")
+
+    with st.expander("Por que não utilizamos Deep Learning?"):
+        st.write(
+            "A base atual reúne 2.845 registros de 1.586 alunos, poucas variáveis tabulares "
+            "e apenas uma janela temporal de teste. Nesse cenário, redes neurais teriam maior "
+            "risco de sobreajuste e não há imagens, textos, áudios ou sequências extensas que "
+            "justifiquem aprendizado automático de representações."
+        )
+        st.write(
+            "Os modelos tabulares já capturam sinal preditivo relevante, são mais simples de "
+            "explicar e auditar e têm menor custo de ajuste e manutenção. Isso é especialmente "
+            "importante porque qualquer sinalização educacional exige supervisão humana. Deep "
+            "Learning poderá ser reavaliado quando houver mais alunos, ciclos e janelas de "
+            "validação, ou dados de maior complexidade, desde que apresente ganho consistente e "
+            "mantenha condições adequadas de explicação e auditoria."
+        )
 
     mostrar_figura(
         FIGURAS_MODELO["comparacao"],
@@ -591,13 +623,13 @@ def pagina_limiar() -> None:
     if linha_050 is not None and linha_040 is not None:
         esquerda, direita = st.columns(2)
         with esquerda:
-            st.markdown("### Limiar padrão • 0,50")
+            titulo_sem_ancora("Limiar padrão • 0,50")
             a, b, c = st.columns(3)
             a.metric("Recall", formatar_percentual(float(linha_050["recall_risco"])))
             b.metric("Falsos negativos", int(linha_050["falsos_negativos"]))
             c.metric("Falsos positivos", int(linha_050["falsos_positivos"]))
         with direita:
-            st.markdown("### Limiar exploratório • 0,40")
+            titulo_sem_ancora("Limiar exploratório • 0,40")
             a, b, c = st.columns(3)
             a.metric("Recall", formatar_percentual(float(linha_040["recall_risco"])))
             b.metric("Falsos negativos", int(linha_040["falsos_negativos"]), delta=-50)
@@ -650,7 +682,7 @@ def pagina_etica() -> None:
 
     esquerda, direita = st.columns(2)
     with esquerda:
-        st.markdown("### Limitações metodológicas")
+        titulo_sem_ancora("Limitações metodológicas")
         st.markdown(
             """
             - O target de risco de defasagem no ano seguinte é provisório.
@@ -663,7 +695,7 @@ def pagina_etica() -> None:
             """
         )
     with direita:
-        st.markdown("### Usos expressamente proibidos")
+        titulo_sem_ancora("Usos expressamente proibidos")
         st.markdown(
             """
             - Excluir ou punir estudantes.
@@ -678,7 +710,7 @@ def pagina_etica() -> None:
 
     st.markdown('<div class="etica"><strong>Regra de decisão:</strong> uma sinalização deve levar à revisão humana e à oferta de apoio. Nunca deve ser apresentada ao estudante como destino, rótulo ou classificação definitiva.</div>', unsafe_allow_html=True)
 
-    st.markdown("### Checklist antes de qualquer piloto")
+    titulo_sem_ancora("Checklist antes de qualquer piloto")
     itens = [
         "Aprovar formalmente o target e a finalidade de uso.",
         "Validar o modelo em nova janela temporal e, quando possível, externamente.",
@@ -700,7 +732,7 @@ def rodape() -> None:
 
 def barra_lateral() -> str:
     with st.sidebar:
-        st.markdown("## ✨ Passos Mágicos")
+        titulo_sem_ancora("✨ Passos Mágicos", nivel="lateral")
         st.caption("Inteligência educacional responsável")
         st.divider()
         pagina = st.radio(

@@ -35,3 +35,5 @@ O Streamlit informará o endereço local, normalmente `http://localhost:8501`.
 ## Uso responsável
 
 O Random Forest é apresentado como modelo candidato preliminar, não como modelo final. O limiar 0,40 é exploratório e não está aprovado para uso operacional. Qualquer evolução do projeto deve preservar supervisão humana e impedir usos para punição, exclusão, ranking ou diagnóstico.
+
+Nesta versão, foram priorizados modelos tabulares: a base tem volume limitado, poucas variáveis, apenas uma janela temporal de teste e alta exigência de explicabilidade. Deep Learning poderá ser reavaliado com mais alunos e ciclos, validação temporal mais ampla e dados de maior complexidade, desde que demonstre ganho consistente e mantenha condições adequadas de auditoria e supervisão humana.

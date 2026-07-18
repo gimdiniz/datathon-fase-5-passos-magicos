@@ -57,7 +57,15 @@ Priorizar modelos tabulares simples e defensáveis:
 - árvore de decisão com controle de complexidade;
 - Random Forest ou gradient boosting somente após baselines e com explicabilidade adequada.
 
-Deep Learning não é recomendado diante do volume, natureza tabular e necessidade de explicação.
+### Decisão metodológica sobre Deep Learning
+
+Deep Learning foi considerado, mas não é a abordagem mais adequada para esta versão do projeto. A base reúne 2.845 registros longitudinais de 1.586 alunos, distribuídos entre 2022, 2023 e 2024. Esse desenho produz somente duas transições temporais e uma única janela efetiva de teste, volume insuficiente para treinar, ajustar e validar redes neurais com estabilidade. Nessas condições, a maior flexibilidade desses modelos ampliaria o risco de sobreajuste sem que fosse possível verificar de forma robusta sua generalização entre diferentes safras.
+
+Os dados são predominantemente tabulares e contêm poucas variáveis preditoras. Não há imagens, textos, áudios ou sequências extensas, nem uma necessidade clara de aprender automaticamente representações complexas. Modelos tabulares regularizados e baseados em árvores aproveitam diretamente a estrutura informacional disponível, já apresentam sinal preditivo relevante e permitem comparar desempenho, erros e sensibilidade de maneira mais defensável diante da única janela temporal disponível.
+
+A escolha também considera o contexto educacional. Explicações compreensíveis, auditoria, supervisão humana e análise dos falsos negativos e falsos positivos são requisitos centrais. Redes neurais aumentariam a dificuldade de explicação e auditoria, além do custo de ajuste, monitoramento e manutenção, sem evidência de benefício proporcional nesta base. A decisão, portanto, é técnica e contextual, não decorre de desconhecimento da abordagem nem de uma limitação meramente computacional.
+
+Deep Learning poderá ser reconsiderado quando houver um volume substancialmente maior de alunos e ciclos, múltiplas janelas temporais independentes para validação e maior complexidade informacional — por exemplo, textos, imagens, áudios ou sequências longitudinais mais extensas. Qualquer reavaliação deverá demonstrar ganho consistente sobre os modelos tabulares, preservar explicabilidade suficiente para o uso educacional e manter revisão humana das sinalizações.
 
 ## Métricas
 
